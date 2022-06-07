@@ -34,3 +34,4 @@ function Testimonio(){
   );
 
 }
+export default Testimonio;
