@@ -1,5 +1,6 @@
 //nos permite usar los metodos de react
-import React from "react"; 
+import React from "react";
+import "../hojas-de-estilo/Testimonio.css" 
 /*
 Archivos que se eliminan
 -setUpTest
@@ -12,7 +13,7 @@ Archivos que se eliminan
 
 //un componente funcional es una funcion de JS
 //un componente funcional retorna un elemento JSX 
-function Testimonio(){
+function Testimonio( props ){
   return(
     <div className="contenedor-testimonio">
       <img
@@ -21,14 +22,20 @@ function Testimonio(){
         //.. hace referencia a al retroceso dentro de las carpetas
         // cada . es un nivel atras
         //todo lo que este dentro de {} se considera de tipo JS
-        src={require("../imagenes/testimonio-emma.png")}
-        alt="Foto de Emma"
+        src={require(`../imagenes/testimonio-${props.imagen}.png`)}
+        alt={`Foto de ${props.imagen}`}
       />
 
       <div className="contenedor-texto-testimonio">
-        <p className="nombre-testimonio">Emma Bostian en Suecia</p>
-        <p className="cargo-testimonio">Ingeniera de Software en Spotify</p>
-        <p className="texto-testimonio">"Siempre he tenido problemas para aprender JavaScript. He tomado muchos cursos, pero el curso de freeCodeCamp fue el que se quedó. Estudiar JavaScript, así como estructuras de datos y algoritmos en freeCodeCamp me dio las habilidades y la confianza que necesitaba para conseguir el trabajo de mis sueños como ingeniero de software en Spotify."</p>
+        <p className="nombre-testimonio">
+          <strong>{ props.nombre }</strong> en { props.pais}
+        </p>
+        <p className="cargo-testimonio">
+          { props.cargo } en <strong>{ props.empresa }</strong>
+        </p>
+        <p className="texto-testimonio">
+          { props.testimonio }
+        </p>
       </div>
     </div>
   );
